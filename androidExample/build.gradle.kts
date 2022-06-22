@@ -1,4 +1,5 @@
 val compose_version: String by extra
+val library_version: String by extra
 
 plugins {
     id("org.jetbrains.compose")
@@ -6,15 +7,11 @@ plugins {
     kotlin("android")
 }
 
-group "com.darkrockstudios.example.richtexteditor"
-version "1.0-SNAPSHOT"
-
-repositories {
-
-}
+group = "com.darkrockstudios.example.richtexteditor"
+version = library_version
 
 dependencies {
-    implementation(project(":library"))
+    implementation(project(":richtexteditor"))
     implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
     implementation("androidx.activity:activity-compose:1.4.0")

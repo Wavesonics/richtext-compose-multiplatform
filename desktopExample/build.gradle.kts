@@ -1,6 +1,7 @@
 import org.jetbrains.compose.compose
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+val library_version: String by extra
 
 plugins {
     kotlin("multiplatform")
@@ -8,8 +9,7 @@ plugins {
 }
 
 group = "com.darkrockstudios.example"
-version = "1.0-SNAPSHOT"
-
+version = library_version
 
 kotlin {
     jvm {
@@ -21,7 +21,7 @@ kotlin {
     sourceSets {
         val jvmMain by getting {
             dependencies {
-                implementation(project(":library"))
+                implementation(project(":richtexteditor"))
                 implementation(compose.desktop.currentOs)
             }
         }
@@ -35,7 +35,7 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "richtext-compose"
-            packageVersion = "1.0.0"
+            packageVersion = library_version
         }
     }
 }

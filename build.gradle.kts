@@ -1,4 +1,4 @@
-group "com.darkrockstudios.libraries.richtexteditor"
+group "com.darkrockstudios.richtexteditor"
 version "1.0-SNAPSHOT"
 
 allprojects {

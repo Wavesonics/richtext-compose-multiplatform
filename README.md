@@ -1,8 +1,6 @@
 # Jetpack Compose Rich Text Editor
 
-[![](https://jitpack.io/v/pChochura/richtext-compose.svg)](https://jitpack.io/#pChochura/richtext-compose)
-
-# This is a hard fork of the fanstastic library of the same name from pChochura. This fork makes it into a multi-platform library
+### This is a hard fork of the fantastic library of the same name from pChochura. This fork makes it into a multi-platform library https://github.com/pChochura/richtext-compose
 
 I've been looking for a library that is able to deliver an editable component which can render rich
 text in real time. The main issue with libraries I found was that they were using WebView and
@@ -16,14 +14,14 @@ So the only solution was to create my own library.
 
 ```groovy
 repositories {
-    maven { url 'https://jitpack.io' }
+   mavenCentral()
 }
 ```
 
 2. Include link do the library (change the version to the current one)
 
 ```groovy
-implementation "com.github.pChochura:richtext-compose:$version"
+implementation "com.darkrockstudios:richtexteditor:$version"
 ```
 
 # Usage

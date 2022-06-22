@@ -15,12 +15,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import com.darkrockstudios.libraries.richtexteditor.model.RichTextValue
-import com.darkrockstudios.libraries.richtexteditor.model.Style
-import com.darkrockstudios.libraries.richtexteditor.ui.RichText
-import com.darkrockstudios.libraries.richtexteditor.ui.RichTextEditor
-import com.darkrockstudios.libraries.richtexteditor.ui.defaultRichTextFieldStyle
-import com.darkrockstudios.libraries.richtexteditor.ui.defaultRichTextStyle
+import com.darkrockstudios.richtexteditor.model.RichTextValue
+import com.darkrockstudios.richtexteditor.model.Style
+import com.darkrockstudios.richtexteditor.ui.RichText
+import com.darkrockstudios.richtexteditor.ui.RichTextEditor
+import com.darkrockstudios.richtexteditor.ui.defaultRichTextFieldStyle
+import com.darkrockstudios.richtexteditor.ui.defaultRichTextStyle
 import kotlin.random.Random
 
 
