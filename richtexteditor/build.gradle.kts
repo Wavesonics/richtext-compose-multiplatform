@@ -2,6 +2,7 @@ import org.jetbrains.compose.compose
 import java.net.URI
 
 val library_version: String by extra
+val kotlin_version = extra["kotlin.version"] as String
 
 plugins {
     kotlin("multiplatform")
@@ -37,8 +38,8 @@ kotlin {
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)
-                implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.21")
-                api("com.arkivanov.essenty:parcelable:0.3.1")
+                implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
+                api("com.arkivanov.essenty:parcelable:0.6.0")
             }
         }
         val commonTest by getting {
@@ -48,8 +49,8 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                api("androidx.appcompat:appcompat:1.4.2")
-                api("androidx.core:core-ktx:1.8.0")
+                api("androidx.appcompat:appcompat:1.5.1")
+                api("androidx.core:core-ktx:1.9.0")
             }
         }
         val androidTest by getting {

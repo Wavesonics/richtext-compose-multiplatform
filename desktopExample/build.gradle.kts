@@ -8,7 +8,7 @@ plugins {
     id("org.jetbrains.compose")
 }
 
-group = "com.darkrockstudios.example"
+group = "com.darkrockstudios.example.desktop"
 version = library_version
 
 kotlin {
