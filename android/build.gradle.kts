@@ -1,5 +1,8 @@
 val compose_version: String by extra
 val library_version: String by extra
+val android_compile_sdk: String by extra
+val android_target_sdk: String by extra
+val android_min_sdk: String by extra
 
 plugins {
     id("org.jetbrains.compose")
@@ -14,7 +17,7 @@ dependencies {
     implementation(project(":richtexteditor"))
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    implementation("androidx.activity:activity-compose:1.5.1")
+    implementation("androidx.activity:activity-compose:1.6.1")
 
     implementation("androidx.compose.ui:ui:$compose_version")
     implementation("androidx.compose.material:material:$compose_version")
@@ -22,11 +25,11 @@ dependencies {
 }
 
 android {
-    compileSdk = 31
+    compileSdk = android_compile_sdk.toInt()
     defaultConfig {
         applicationId = "com.darkrockstudios.example.richtexteditor"
-        minSdk = 24
-        targetSdk = 31
+        minSdk = android_min_sdk.toInt()
+        targetSdk = android_target_sdk.toInt()
         versionCode = 1
         versionName = "1.0-SNAPSHOT"
     }
@@ -45,7 +48,7 @@ android {
     }
     packagingOptions {
         resources {
-            excludes += mutableSetOf("/META-INF/{AL2.0,LGPL2.1}")
+            excludes += setOf("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
 }

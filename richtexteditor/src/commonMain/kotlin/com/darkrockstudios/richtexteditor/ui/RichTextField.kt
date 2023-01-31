@@ -4,8 +4,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,7 +28,8 @@ internal fun RichTextField(
     styleMapper: StyleMapper,
     onValueChange: (TextFieldValue) -> Unit,
     modifier: Modifier = Modifier,
-    textFieldStyle: RichTextFieldStyle = defaultRichTextFieldStyle()
+    textFieldStyle: RichTextFieldStyle = defaultRichTextFieldStyle(),
+    readOnly: Boolean = false,
 ) {
     Box(modifier = modifier) {
         if (value.text.isEmpty()) {
@@ -40,6 +41,7 @@ internal fun RichTextField(
                 )
             )
         }
+
         BasicTextField(
             modifier = Modifier.fillMaxSize(),
             value = value,
@@ -53,7 +55,8 @@ internal fun RichTextField(
             textStyle = textFieldStyle.textStyle.copy(
                 color = textFieldStyle.textColor
             ),
-            cursorBrush = SolidColor(textFieldStyle.cursorColor)
+            cursorBrush = SolidColor(textFieldStyle.cursorColor),
+            readOnly = readOnly,
         )
     }
 }
@@ -64,10 +67,10 @@ fun defaultRichTextFieldStyle() = RichTextFieldStyle(
         capitalization = KeyboardCapitalization.Sentences,
     ),
     placeholder = EMPTY_STRING,
-    textStyle = MaterialTheme.typography.body1,
-    textColor = MaterialTheme.colors.onPrimary,
-    placeholderColor = MaterialTheme.colors.secondaryVariant,
-    cursorColor = MaterialTheme.colors.secondary,
+    textStyle = MaterialTheme.typography.bodySmall,
+    textColor = MaterialTheme.colorScheme.onSurface,
+    placeholderColor = MaterialTheme.colorScheme.secondary,
+    cursorColor = MaterialTheme.colorScheme.secondary,
 )
 
 data class RichTextFieldStyle(

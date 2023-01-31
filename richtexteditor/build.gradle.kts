@@ -1,8 +1,10 @@
-import org.jetbrains.compose.compose
 import java.net.URI
 
 val library_version: String by extra
 val kotlin_version = extra["kotlin.version"] as String
+val android_compile_sdk: String by extra
+val android_target_sdk: String by extra
+val android_min_sdk: String by extra
 
 plugins {
     kotlin("multiplatform")
@@ -33,13 +35,14 @@ kotlin {
         }
     }
     sourceSets {
+        @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
         val commonMain by getting {
             dependencies {
                 api(compose.runtime)
                 api(compose.foundation)
-                api(compose.material)
+                api(compose.material3)
                 implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
-                api("com.arkivanov.essenty:parcelable:0.6.0")
+                api("com.arkivanov.essenty:parcelable:0.10.0")
             }
         }
         val commonTest by getting {
@@ -154,11 +157,11 @@ signing {
 }
 
 android {
-    compileSdk = 31
+    compileSdk = android_compile_sdk.toInt()
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdk = 24
-        targetSdk = 31
+        minSdk = android_min_sdk.toInt()
+        targetSdk = android_target_sdk.toInt()
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

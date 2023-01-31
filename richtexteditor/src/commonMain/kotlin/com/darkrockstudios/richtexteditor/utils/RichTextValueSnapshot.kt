@@ -10,9 +10,9 @@ import com.darkrockstudios.richtexteditor.mappers.StyleMapper
 @Parcelize
 data class RichTextValueSnapshot(
     val text: String,
-    val spanStyles: List<RichTextValueSpanSnapshot>,
-    val paragraphStyles: List<RichTextValueSpanSnapshot>,
-    val selectionPosition: Int,
+    val spanStyles: List<RichTextValueSpanSnapshot> = emptyList(),
+    val paragraphStyles: List<RichTextValueSpanSnapshot> = emptyList(),
+    val selectionPosition: Int = 0,
 ) : Parcelable {
 
     internal fun toAnnotatedStringBuilder(styleMapper: StyleMapper): AnnotatedStringBuilder {

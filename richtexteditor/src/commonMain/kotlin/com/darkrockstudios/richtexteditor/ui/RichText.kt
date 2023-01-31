@@ -1,7 +1,7 @@
 package com.darkrockstudios.richtexteditor.ui
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,8 +32,8 @@ fun RichText(
 
 @Composable
 fun defaultRichTextStyle() = RichTextStyle(
-    textStyle = MaterialTheme.typography.body1,
-    textColor = MaterialTheme.colors.onPrimary,
+    textStyle = MaterialTheme.typography.bodySmall,
+    textColor = MaterialTheme.colorScheme.onSurface,
 )
 
 data class RichTextStyle(

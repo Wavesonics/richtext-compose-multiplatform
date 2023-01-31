@@ -18,4 +18,4 @@ pluginManagement {
 
 rootProject.name = "richtext-compose"
 
-include(":androidExample", ":desktopExample", ":richtexteditor")
+include(":android", ":desktopExample", ":richtexteditor")

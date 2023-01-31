@@ -12,17 +12,12 @@ internal typealias StyleRange<T> = AnnotatedStringBuilder.MutableRange<T>
 
 internal class RichTextValueImpl(override val styleMapper: StyleMapper) : RichTextValue() {
 
-    private val annotatedStringBuilder = AnnotatedStringBuilder()
+    val annotatedStringBuilder = AnnotatedStringBuilder()
     private var selection: TextRange = TextRange.Zero
     private var composition: TextRange? = null
 
     private var historyOffset: Int = 0
-    private val historySnapshots = mutableListOf(
-        RichTextValueSnapshot.fromAnnotatedStringBuilder(
-            annotatedStringBuilder,
-            selectionPosition = selection.start
-        )
-    )
+    private val historySnapshots = mutableListOf<RichTextValueSnapshot>()
     private val currentSnapshot: RichTextValueSnapshot?
         get() = historySnapshots.elementAtOrNull(
             historySnapshots.lastIndex - historyOffset
@@ -278,11 +273,11 @@ internal class RichTextValueImpl(override val styleMapper: StyleMapper) : RichTe
 
     override fun redo() = this.copy().redoInternal()
 
-    override fun updatedValueAndStyles(value: TextFieldValue): Boolean {
+    override fun updatedValueAndStyles(newValue: TextFieldValue): Boolean {
         var updateText = true
         val updatedStyles = annotatedStringBuilder.updateStyles(
             previousSelection = selection,
-            currentValue = value.text,
+            currentValue = newValue.text,
             onCollapsedParagraphsCallback = { updateText = false },
             onEscapeParagraphCallback = {
                 updateText = false
@@ -290,21 +285,24 @@ internal class RichTextValueImpl(override val styleMapper: StyleMapper) : RichTe
             }
         )
 
-        if (updatedStyles || annotatedStringBuilder.text != value.text ||
-            selection != value.selection || composition != value.composition
+        if (updatedStyles || annotatedStringBuilder.text != newValue.text ||
+            selection != newValue.selection || composition != newValue.composition
         ) {
             if (updateText) {
-                annotatedStringBuilder.text = value.text
-                selection = value.selection
-                composition = value.composition
+                annotatedStringBuilder.text = newValue.text
+                selection = newValue.selection
+                composition = newValue.composition
             }
 
-            currentSnapshot?.run {
-                if (value.text.length - text.length >= MIN_LENGTH_DIFFERENCE) {
+            val snapshot = currentSnapshot
+            if (snapshot != null) {
+                if (newValue.text.length - snapshot.text.length >= MIN_LENGTH_DIFFERENCE) {
                     updateHistory()
-                } else if (value.text != text) {
+                } else if (newValue.text != snapshot.text) {
                     clearRedoStack()
                 }
+            } else if (newValue.text.isNotEmpty()) {
+                updateHistory()
             }
 
             return true

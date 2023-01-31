@@ -46,5 +46,14 @@ abstract class RichTextValue {
         ): RichTextValue = RichTextValueImpl(styleMapper).apply {
             restoreFromSnapshot(snapshot)
         }
+
+        fun fromString(
+            text: String,
+            styleMapper: StyleMapper = StyleMapper()
+        ): RichTextValue {
+            val value = RichTextValueImpl(styleMapper)
+            value.restoreFromSnapshot(RichTextValueSnapshot(text = text))
+            return value
+        }
     }
 }
