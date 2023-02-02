@@ -1,10 +1,7 @@
 package com.darkrockstudios.example
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Surface
@@ -211,13 +208,23 @@ fun main() = application {
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun EditorAction(
     iconRes: String,
     active: Boolean,
     onClick: () -> Unit,
 ) {
-    IconButton(onClick = onClick) {
+    /*
+    // https://github.com/JetBrains/compose-jb/issues/2569
+    IconButton(
+        onClick = onClick,
+        modifier = Modifier.focusable(false)
+    ) {
+    */
+    Box(
+        modifier = Modifier.onClick { onClick() }
+    ) {
         Icon(
             modifier = Modifier.size(24.dp),
             painter = painterResource("images/$iconRes.xml"),
