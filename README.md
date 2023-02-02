@@ -237,3 +237,8 @@ var value by remember {
     )
 }
 ```
+
+## Known Problems
+
+- Losing focus collapses any active selection https://github.com/JetBrains/compose-jb/issues/2569
+- No way to render a scroll bar currently
