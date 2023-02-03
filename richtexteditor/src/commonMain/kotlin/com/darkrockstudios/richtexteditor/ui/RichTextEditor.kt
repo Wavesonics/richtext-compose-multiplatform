@@ -9,7 +9,8 @@ fun RichTextEditor(
     value: RichTextValue,
     onValueChange: (RichTextValue) -> Unit,
     modifier: Modifier = Modifier,
-    textFieldStyle: RichTextFieldStyle = defaultRichTextFieldStyle()
+    textFieldStyle: RichTextFieldStyle = defaultRichTextFieldStyle(),
+    readOnly: Boolean = false,
 ) {
     RichTextField(
         modifier = modifier,
@@ -22,6 +23,7 @@ fun RichTextEditor(
                 onValueChange(newValue)
             }
         },
-        textFieldStyle = textFieldStyle
+        textFieldStyle = textFieldStyle,
+        readOnly = readOnly,
     )
 }
