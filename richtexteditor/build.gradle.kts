@@ -164,3 +164,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 }
+
+tasks.named("publishKotlinMultiplatformPublicationToMavenRepository") {
+    dependsOn(":richtexteditor:signAndroidReleasePublication")
+}
