@@ -26,12 +26,12 @@ extra.apply {
 }
 
 kotlin {
-    android {
+    androidTarget {
         publishLibraryVariants("release")
     }
     jvm("desktop") {
         compilations.all {
-            kotlinOptions.jvmTarget = "11"
+            kotlinOptions.jvmTarget = "17"
         }
     }
     sourceSets {
@@ -42,7 +42,7 @@ kotlin {
                 api(compose.foundation)
                 api(compose.material3)
                 implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
-                api("com.arkivanov.essenty:parcelable:0.10.0")
+                api("com.arkivanov.essenty:parcelable:1.3.0")
             }
         }
         val commonTest by getting {
@@ -52,13 +52,8 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                api("androidx.appcompat:appcompat:1.5.1")
-                api("androidx.core:core-ktx:1.9.0")
-            }
-        }
-        val androidTest by getting {
-            dependencies {
-                implementation("junit:junit:4.13.2")
+                api("androidx.appcompat:appcompat:1.6.1")
+                api("androidx.core:core-ktx:1.12.0")
             }
         }
         val desktopMain by getting {
@@ -75,7 +70,7 @@ kotlin {
     }
 
     val publicationsFromMainHost =
-        listOf(jvm("desktop"), android()).map { it.name } + "kotlinMultiplatform"
+        listOf(jvm("desktop"), androidTarget()).map { it.name } + "kotlinMultiplatform"
 
     val javadocJar by tasks.registering(Jar::class) {
         archiveClassifier.set("javadoc")
@@ -157,14 +152,15 @@ signing {
 }
 
 android {
+    namespace = "com.darkrockstudios.example.richtexteditor"
     compileSdk = android_compile_sdk.toInt()
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = android_min_sdk.toInt()
-        targetSdk = android_target_sdk.toInt()
+        lint.targetSdk = android_target_sdk.toInt()
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
