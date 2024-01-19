@@ -1,4 +1,4 @@
-package com.darkrockstudios.example
+package com.darkrockstudios.example.richtexteditor
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

@@ -152,7 +152,7 @@ signing {
 }
 
 android {
-    namespace = "com.darkrockstudios.example.richtexteditor"
+    namespace = "com.darkrockstudios.richtexteditor.common"
     compileSdk = android_compile_sdk.toInt()
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
