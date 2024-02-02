@@ -1,3 +1,5 @@
+# *This repository is deprecated and unmaintained.* I suggest looking at this library as an alternative: https://github.com/MohamedRejeb/Compose-Rich-Editor
+
 # Jetpack Compose Rich Text Editor
 
 ### This is a hard fork of the fantastic library of the same name from pChochura. This fork makes it into a multi-platform library https://github.com/pChochura/richtext-compose
