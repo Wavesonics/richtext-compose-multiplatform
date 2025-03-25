@@ -1,4 +1,4 @@
-# ⚠️ *This repository is deprecated and unmaintained.* ⚠️
+# ⚠️ *This repository is deprecated and unmaintained.*
 ### I suggest looking at one of these alternatives:
 - https://github.com/Wavesonics/ComposeTextEditorLibrary
 - https://github.com/MohamedRejeb/Compose-Rich-Editor
