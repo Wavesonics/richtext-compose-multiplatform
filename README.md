@@ -1,4 +1,7 @@
-# *This repository is deprecated and unmaintained.* I suggest looking at this library as an alternative: https://github.com/MohamedRejeb/Compose-Rich-Editor
+# ⚠️ *This repository is deprecated and unmaintained.* ⚠️
+### I suggest looking at one of these alternatives:
+- https://github.com/Wavesonics/ComposeTextEditorLibrary
+- https://github.com/MohamedRejeb/Compose-Rich-Editor
 
 # Jetpack Compose Rich Text Editor
 
